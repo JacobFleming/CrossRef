@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">CrossRef</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Login Strings -->
+    <string name="application_name">CrossRef</string>
+    <string name="username_hint">Username</string>
+    <string name="password_hint">Password</string>
+    <string name="login_button">Login</string>
+    <string name="signup_text">Sign Up!</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="login_error_message">Username or password incorrect</string>
+    <string name="login_error_title">Oops!</string>
+
+    <!-- Register Strings -->
+    <string name="register_title">Register!</string>
+    <string name="username_register_hint">Enter username</string>
+    <string name="email_register_hint">Enter email (optional)</string>
+    <string name="password_register_hint">Enter password</string>
+    <string name="sign_up_button">Sign up</string>
+    <string name="sign_up_error_message">Please make sure you enter a username, password, and email address.</string>
+    <string name="sign_up_error_title">Oops!</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_landing_page">LandingPageActivity</string>
+</resources>
