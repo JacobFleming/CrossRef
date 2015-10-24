@@ -12,7 +12,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_register"
     tools:context="com.colinfrerichs.crossref.RegisterActivity"
-    android:background="#529ecc">
+    android:background="#3b5998">
 
     <TextView
         android:layout_width="wrap_content"
@@ -23,12 +23,12 @@
         android:layout_marginTop="105dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:textColor="#36465d"
+        android:textColor="#ffffff"
         android:textStyle="bold"
         android:textSize="40sp"/>
 
     <EditText
-        android:maxLines="1"
+        android:inputType="text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/createUsernameText"
@@ -37,11 +37,11 @@
         android:layout_marginBottom="25dp"
         android:hint="@string/username_register_hint"
         android:backgroundTint="#f2f5d3"
-        android:gravity="center"
-        android:textColor="#36465d"/>
+        android:textColor="#f7f7f7"
+        android:textColorHint="#f7f7f7"/>
 
     <EditText
-        android:maxLines="1"
+        android:inputType="text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/createEmailText"
@@ -50,8 +50,9 @@
         android:layout_marginBottom="25dp"
         android:hint="@string/email_register_hint"
         android:backgroundTint="#f2f5d3"
-        android:gravity="center"
-        android:textColor="#36465d"/>
+        android:textColor="#f7f7f7"
+        android:textColorHint="#f7f7f7"
+        />
 
     <EditText
         android:maxLines="1"
@@ -65,8 +66,8 @@
         android:layout_marginBottom="25dp"
         android:hint="@string/password_register_hint"
         android:backgroundTint="#f2f5d3"
-        android:gravity="center"
-        android:textColor="#36465d"/>
+        android:textColor="#f7f7f7"
+        android:textColorHint="#f7f7f7"/>
 
     <Button
         android:layout_width="match_parent"

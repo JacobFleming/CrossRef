@@ -41,8 +41,6 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 if (mUsernameLogin.getText().toString().equals(null) || mPasswordLogin.getText().toString().equals(null)) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                     builder.setMessage(R.string.login_error_message);
@@ -61,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
                         public void done(ParseUser parseUser, ParseException e) {
                             if (e == null) {
                                 //success
-                                Intent myIntent = new Intent(LoginActivity.this, LandingPageActivity.class);
+                                Intent myIntent = new Intent(LoginActivity.this, MainActivity.class);
                                 startActivity(myIntent);
                             } else {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
