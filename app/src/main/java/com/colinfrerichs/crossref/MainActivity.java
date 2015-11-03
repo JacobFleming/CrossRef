@@ -6,8 +6,12 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import com.parse.ParseUser;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,17 +22,14 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-                ParseUser.logOut();
-                Intent logoutIntent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(logoutIntent);
-            }
-        });
+        Spinner spinBook = (Spinner) findViewById(R.id.spinBook);
+        Spinner spinChapter = (Spinner) findViewById(R.id.spinChapter);
+        Spinner spinVerse = (Spinner) findViewById(R.id.spinVerse);
+
+        ArrayAdapter<CharSequence> bookAdapter = ArrayAdapter.createFromResource(this,
+                                                 R.array.books_bible, android.R.layout.simple_spinner_item);
+        spinBook.setAdapter(bookAdapter);
+
     }
 
 }
