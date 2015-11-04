@@ -17,7 +17,7 @@
     <string name="confirm_password_field">Confirm password</string>
     <string name="password_register_hint">Enter password</string>
     <string name="sign_up_button">Sign Up</string>
-    <string name="sign_up_error_message">Please make sure you enter a username, password, and email address.</string>
+    <string name="sign_up_error_message">Please make sure your passwords match.</string>
     <string name="sign_up_error_title">Oops!</string>
 
     <!-- Misc. -->
