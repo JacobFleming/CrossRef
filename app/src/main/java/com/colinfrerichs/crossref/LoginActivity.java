@@ -17,7 +17,6 @@ import com.parse.ParseUser;
 public class LoginActivity extends AppCompatActivity {
 
     private TextView mSignUpText;
-    private EditText mUsernameLogin;
     private EditText mPasswordLogin;
     private Button loginButton;
 
@@ -38,14 +37,13 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        mUsernameLogin = (EditText) findViewById(R.id.usernameField);
         mPasswordLogin = (EditText) findViewById(R.id.passwordField);
         loginButton = (Button) findViewById(R.id.loginButton);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mUsernameLogin.getText().toString().equals(null) || mPasswordLogin.getText().toString().equals(null)) {
+                if (mPasswordLogin.getText().toString().equals(null)) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                     builder.setMessage(R.string.login_error_message);
                     builder.setTitle(R.string.login_error_title);
@@ -53,12 +51,10 @@ public class LoginActivity extends AppCompatActivity {
                     AlertDialog dialog = builder.create();
                     dialog.show();
                 } else {
-                    //create the new user.
-                    String username = mUsernameLogin.getText().toString();
+
                     String password = mPasswordLogin.getText().toString();
-                    username = username.trim();
                     password = password.trim();
-                    ParseUser.logInInBackground(username, password, new LogInCallback() {
+                    ParseUser.logInInBackground(loadUserData(), password, new LogInCallback() {
                         @Override
                         public void done(ParseUser parseUser, ParseException e) {
                             if (e == null) {
