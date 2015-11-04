@@ -36,7 +36,7 @@ public class RegisterActivity extends AppCompatActivity {
                 password = password.trim();
                 confirmPassword = confirmPassword.trim();
 
-                if ( confirmPassword.isEmpty() || password.isEmpty()) {
+                if ((confirmPassword.isEmpty() || password.isEmpty()) && (!password.equals(confirmPassword))) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
                     builder.setMessage(R.string.sign_up_error_message);
                     builder.setTitle(R.string.sign_up_error_title);
