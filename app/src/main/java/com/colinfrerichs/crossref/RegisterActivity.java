@@ -34,6 +34,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String confirmPassword = mConfirmPasswordRegister.getText().toString();
 
                 password = password.trim();
+                confirmPassword = confirmPassword.trim();
 
                 if ( confirmPassword.isEmpty() || password.isEmpty()) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
