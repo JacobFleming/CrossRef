@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mPasswordLogin.getText().toString().equals(null)) {
+                if (mPasswordLogin.getText().toString().equals("")) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                     builder.setMessage(R.string.login_error_message);
                     builder.setTitle(R.string.login_error_title);
