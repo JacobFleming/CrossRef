@@ -2,6 +2,7 @@ package com.colinfrerichs.crossref;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -19,6 +20,9 @@ public class LoginActivity extends AppCompatActivity {
     private EditText mUsernameLogin;
     private EditText mPasswordLogin;
     private Button loginButton;
+
+    private static final String SHARED_PREF_FILENAME = "SECRETS";
+    private static final String id = "user";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,5 +78,10 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private String loadUserData() {
+        SharedPreferences mPref = getSharedPreferences(SHARED_PREF_FILENAME, MODE_PRIVATE);
+        return mPref.getString(id, "");
     }
 }
