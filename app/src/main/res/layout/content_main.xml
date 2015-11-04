@@ -13,4 +13,27 @@
     tools:showIn="@layout/activity_main"
     tools:context="com.colinfrerichs.crossref.MainActivity">
 
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinBook"
+        android:layout_marginTop="34dp"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/spinner_outline" />
+
+    <Spinner
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="34dp"
+        android:id="@+id/spinChapter"
+        android:layout_toRightOf="@+id/spinBook"
+        android:background="@drawable/spinner_outline" />
+
+    <Spinner
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="34dp"
+        android:id="@+id/spinVerse"
+        android:layout_toRightOf="@+id/spinChapter"
+        android:background="@drawable/spinner_outline" />
 </RelativeLayout>
