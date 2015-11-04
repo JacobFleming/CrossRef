@@ -73,7 +73,7 @@ public class RegisterActivity extends AppCompatActivity {
                                         }
                                         else {
                                             AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
-                                            builder.setMessage(R.string.sign_up_error_message);
+                                            builder.setMessage(R.string.update_user_error);
                                             builder.setTitle(R.string.sign_up_error_title);
                                             builder.setPositiveButton(android.R.string.ok, null);
                                             AlertDialog dialog = builder.create();
@@ -85,7 +85,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                             } else {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
-                                builder.setMessage(R.string.sign_up_error_message);
+                                builder.setMessage(R.string.sign_up_error_parse);
                                 builder.setTitle(R.string.sign_up_error_title);
                                 builder.setPositiveButton(android.R.string.ok, null);
                                 AlertDialog dialog = builder.create();

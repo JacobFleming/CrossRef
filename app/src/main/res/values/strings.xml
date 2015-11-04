@@ -17,7 +17,9 @@
     <string name="confirm_password_field">Confirm password</string>
     <string name="password_register_hint">Enter password</string>
     <string name="sign_up_button">Sign Up</string>
-    <string name="sign_up_error_message">Please make sure your passwords match.</string>
+    <string name="sign_up_error_message">Please make sure your passwords match and all fields are filled in.</string>
+    <string name="sign_up_error_parse">Unable to create user at this time.</string>
+    <string name="update_user_error">Unable to update username.</string>
     <string name="sign_up_error_title">Oops!</string>
 
     <!-- Misc. -->
