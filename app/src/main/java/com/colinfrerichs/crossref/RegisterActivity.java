@@ -49,13 +49,15 @@ public class RegisterActivity extends AppCompatActivity {
                     dialog.show();
                 } else {
                     //create the new user
-                    ParseUser newUser = new ParseUser();
+                    final ParseUser newUser = new ParseUser();
                     newUser.setPassword(password);
                     newUser.signUpInBackground(new SignUpCallback() {
                         @Override
                         public void done(ParseException e) {
                             if (e == null) {
                                 //success
+                                SaveUserData(newUser.getObjectId());
+
                                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
