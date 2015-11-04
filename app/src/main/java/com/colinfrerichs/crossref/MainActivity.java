@@ -11,6 +11,7 @@ import android.widget.Spinner;
 
 import com.parse.ParseUser;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -29,6 +30,28 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<CharSequence> bookAdapter = ArrayAdapter.createFromResource(this,
                                                  R.array.books_bible, android.R.layout.simple_spinner_item);
         spinBook.setAdapter(bookAdapter);
+
+        List<Integer> chapters_bible = new ArrayList<Integer>();
+        int chapter = 1;
+        for(int i = 0; i < 150; i++){
+            chapters_bible.add(chapter);
+            chapter++;
+        }
+
+        ArrayAdapter<Integer> chapterAdapter = new ArrayAdapter<Integer>(this,
+                                                   android.R.layout.simple_spinner_item, chapters_bible);
+        spinChapter.setAdapter(chapterAdapter);
+
+        List<Integer> verses_bible = new ArrayList<Integer>();
+        int verse = 1;
+        for(int i = 0; i < 176; i++){
+            verses_bible.add(verse);
+            verse++;
+        }
+
+        ArrayAdapter<Integer> verseAdapter = new ArrayAdapter<Integer>(this,
+                                                 android.R.layout.simple_spinner_item, verses_bible);
+        spinVerse.setAdapter(verseAdapter);
 
     }
 
