@@ -14,9 +14,8 @@ import com.parse.SignUpCallback;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText mUsernameRegister;
     private EditText mPasswordRegister;
-    private EditText mEmail;
+    private EditText mConfirmPasswordRegister;
     private Button mSignUpButton;
 
     @Override
@@ -24,23 +23,19 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        mUsernameRegister = (EditText) findViewById(R.id.createUsernameText);
         mPasswordRegister = (EditText) findViewById(R.id.createPasswordText);
-        mEmail = (EditText) findViewById(R.id.createEmailText);
+        mConfirmPasswordRegister = (EditText) findViewById(R.id.confirmPasswordText);
         mSignUpButton = (Button) findViewById(R.id.registerButton);
 
         mSignUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = mUsernameRegister.getText().toString();
                 String password = mPasswordRegister.getText().toString();
-                String email = mEmail.getText().toString();
+                String confirmPassword = mConfirmPasswordRegister.getText().toString();
 
-                username = username.trim();
                 password = password.trim();
-                email = email.trim();
 
-                if (username.isEmpty() || password.isEmpty() || email.isEmpty()) {
+                if ( confirmPassword.isEmpty() || password.isEmpty()) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
                     builder.setMessage(R.string.sign_up_error_message);
                     builder.setTitle(R.string.sign_up_error_title);
@@ -50,9 +45,7 @@ public class RegisterActivity extends AppCompatActivity {
                 } else {
                     //create the new user
                     ParseUser newUser = new ParseUser();
-                    newUser.setUsername(username);
                     newUser.setPassword(password);
-                    newUser.setEmail(email);
                     newUser.signUpInBackground(new SignUpCallback() {
                         @Override
                         public void done(ParseException e) {

@@ -25,34 +25,7 @@
         android:layout_centerHorizontal="true"
         android:textColor="#ffffff"
         android:textStyle="bold"
-        android:textSize="40sp"/>
-
-    <EditText
-        android:inputType="text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/createUsernameText"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="25dp"
-        android:hint="@string/username_register_hint"
-        android:backgroundTint="#f2f5d3"
-        android:textColor="#f7f7f7"
-        android:textColorHint="#f7f7f7"/>
-
-    <EditText
-        android:inputType="text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/createEmailText"
-        android:layout_below="@+id/createUsernameText"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="25dp"
-        android:hint="@string/email_register_hint"
-        android:backgroundTint="#f2f5d3"
-        android:textColor="#f7f7f7"
-        android:textColorHint="#f7f7f7"
-        />
+        android:textSize="45sp"/>
 
     <EditText
         android:maxLines="1"
@@ -61,13 +34,14 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/createPasswordText"
-        android:layout_below="@+id/createEmailText"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="25dp"
         android:hint="@string/password_register_hint"
         android:backgroundTint="#f2f5d3"
+        android:layout_marginBottom="45dp"
         android:textColor="#f7f7f7"
-        android:textColorHint="#f7f7f7"/>
+        android:textColorHint="#f7f7f7"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
 
     <Button
         android:layout_width="match_parent"
@@ -76,7 +50,23 @@
         android:id="@+id/registerButton"
         android:background="@drawable/roundedbuttons"
         android:textColor="#f2f5d3"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="101dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/confirmPasswordText"
+        android:layout_marginBottom="45dp"
+        android:textColorHint="#f7f7f7"
+        android:textColor="#f7f7f7"
+        android:backgroundTint="#f2f5d3"
+        android:hint="@string/confirm_password_field"
         android:layout_below="@+id/createPasswordText"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"/>
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
 </RelativeLayout>

@@ -14,8 +14,7 @@
 
     <!-- Register Strings -->
     <string name="register_title">Register!</string>
-    <string name="username_register_hint">Enter username</string>
-    <string name="email_register_hint">Enter email (optional)</string>
+    <string name="confirm_password_field">Confirm password</string>
     <string name="password_register_hint">Enter password</string>
     <string name="sign_up_button">Sign Up</string>
     <string name="sign_up_error_message">Please make sure you enter a username, password, and email address.</string>
