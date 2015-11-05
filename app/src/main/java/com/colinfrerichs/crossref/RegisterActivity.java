@@ -59,9 +59,11 @@ public class RegisterActivity extends AppCompatActivity {
                         public void done(ParseException e) {
                             if (e == null) {
                                 //success
-                                newUser.logInInBackground(newUser.getUsername(), finalPassword);
-                                newUser.setUsername(newUser.getObjectId());
-                                newUser.saveInBackground(new SaveCallback() {
+                                ParseUser.logInInBackground(newUser.getUsername(), finalPassword);
+                                ParseUser currentUser = ParseUser.getCurrentUser();
+
+                                currentUser.setUsername(newUser.getObjectId());
+                                currentUser.saveInBackground(new SaveCallback() {
                                     @Override
                                     public void done(ParseException e) {
                                         if (e != null) {
@@ -70,7 +72,7 @@ public class RegisterActivity extends AppCompatActivity {
                                             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                             SaveUserData(newUser.getObjectId());
-                                            newUser.logOutInBackground();
+                                            ParseUser.logOut();
                                             startActivity(intent);
                                         } else {
                                             AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
