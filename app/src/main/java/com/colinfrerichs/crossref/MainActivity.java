@@ -7,7 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.parse.ParseUser;
 
@@ -23,9 +25,9 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Spinner spinBook = (Spinner) findViewById(R.id.spinBook);
-        Spinner spinChapter = (Spinner) findViewById(R.id.spinChapter);
-        Spinner spinVerse = (Spinner) findViewById(R.id.spinVerse);
+        final Spinner spinBook = (Spinner) findViewById(R.id.spinBook);
+        final Spinner spinChapter = (Spinner) findViewById(R.id.spinChapter);
+        final Spinner spinVerse = (Spinner) findViewById(R.id.spinVerse);
 
         ArrayAdapter<CharSequence> bookAdapter = ArrayAdapter.createFromResource(this,
                                                  R.array.books_bible, android.R.layout.simple_spinner_item);
@@ -53,6 +55,16 @@ public class MainActivity extends AppCompatActivity {
                                                  android.R.layout.simple_spinner_item, verses_bible);
         spinVerse.setAdapter(verseAdapter);
 
+        Button btnSendRef = (Button) findViewById(R.id.btnSendReference);
+        btnSendRef.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String bookText = spinBook.getSelectedItem().toString();
+                String chapText = spinChapter.getSelectedItem().toString();
+                String verseText = spinVerse.getSelectedItem().toString();
+                Toast.makeText(MainActivity.this, bookText + " " + chapText + ":" + verseText, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
 }
