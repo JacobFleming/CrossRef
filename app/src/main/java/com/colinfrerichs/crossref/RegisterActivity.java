@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -80,7 +79,6 @@ public class RegisterActivity extends AppCompatActivity {
 
                                                 }
                                             });
-                                            Toast.makeText(RegisterActivity.this, loadUserData(),Toast.LENGTH_LONG).show();
                                             ParseUser.logOut();
                                             startActivity(intent);
                                         } else {
