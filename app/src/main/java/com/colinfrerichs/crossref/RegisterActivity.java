@@ -52,26 +52,27 @@ public class RegisterActivity extends AppCompatActivity {
                     //create the new user
                     final ParseUser newUser = new ParseUser();
                     newUser.setPassword(password);
-                    newUser.setUsername("newUser");
+                    newUser.setUsername("lastTry");
+                    final String finalPassword = password;
                     newUser.signUpInBackground(new SignUpCallback() {
                         @Override
                         public void done(ParseException e) {
                             if (e == null) {
                                 //success
-                                SaveUserData(newUser.getObjectId());
-
+                                newUser.logInInBackground(newUser.getUsername(), finalPassword);
                                 newUser.setUsername(newUser.getObjectId());
                                 newUser.saveInBackground(new SaveCallback() {
                                     @Override
                                     public void done(ParseException e) {
-                                        if (e != null){
+                                        if (e != null) {
                                             //Success
                                             Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                                             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                            SaveUserData(newUser.getObjectId());
+                                            newUser.logOutInBackground();
                                             startActivity(intent);
-                                        }
-                                        else {
+                                        } else {
                                             AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
                                             builder.setMessage(R.string.update_user_error);
                                             builder.setTitle(R.string.sign_up_error_title);
