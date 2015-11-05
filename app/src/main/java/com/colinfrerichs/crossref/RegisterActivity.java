@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -52,7 +53,7 @@ public class RegisterActivity extends AppCompatActivity {
                     //create the new user
                     final ParseUser newUser = new ParseUser();
                     newUser.setPassword(password);
-                    newUser.setUsername("lastTry");
+                    newUser.setUsername("fac");
                     final String finalPassword = password;
                     newUser.signUpInBackground(new SignUpCallback() {
                         @Override
@@ -72,6 +73,14 @@ public class RegisterActivity extends AppCompatActivity {
                                             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                             SaveUserData(newUser.getObjectId());
+                                            newUser.setUsername(newUser.getObjectId());
+                                            newUser.saveInBackground(new SaveCallback() {
+                                                @Override
+                                                public void done(ParseException e) {
+
+                                                }
+                                            });
+                                            Toast.makeText(RegisterActivity.this, loadUserData(),Toast.LENGTH_LONG).show();
                                             ParseUser.logOut();
                                             startActivity(intent);
                                         } else {
@@ -108,5 +117,9 @@ public class RegisterActivity extends AppCompatActivity {
 
         mEditor.putString(id, user);
         mEditor.commit();
+    }
+    private String loadUserData() {
+        SharedPreferences mPref = getSharedPreferences(SHARED_PREF_FILENAME, MODE_PRIVATE);
+        return mPref.getString(id, "");
     }
 }
