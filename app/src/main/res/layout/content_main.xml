@@ -36,4 +36,15 @@
         android:id="@+id/spinVerse"
         android:layout_toRightOf="@+id/spinChapter"
         android:background="@drawable/spinner_outline" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Send Reference"
+        android:id="@+id/btnSendReference"
+        android:layout_below="@+id/spinBook"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="43dp"
+        android:background="@drawable/roundedbuttons"
+        android:textColor="#ffffff" />
 </RelativeLayout>
