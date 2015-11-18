@@ -52,7 +52,7 @@ public class RegisterActivity extends AppCompatActivity {
                     //create the new user
                     final ParseUser newUser = new ParseUser();
                     newUser.setPassword(password);
-                    newUser.setUsername("Word");
+                    newUser.setUsername("");
                     final String finalPassword = password;
                     newUser.signUpInBackground(new SignUpCallback() {
                         @Override
