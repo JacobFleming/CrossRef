@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //Creating the spinners that will choose the reference
         final Spinner spinBook = (Spinner) findViewById(R.id.spinBook);
         final Spinner spinChapter = (Spinner) findViewById(R.id.spinChapter);
         final Spinner spinVerse = (Spinner) findViewById(R.id.spinVerse);
@@ -55,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
                                                  android.R.layout.simple_spinner_item, verses_bible);
         spinVerse.setAdapter(verseAdapter);
 
+        //Button will save the current reference, look up the verse in the API, and send it to Parse
         Button btnSendRef = (Button) findViewById(R.id.btnSendReference);
         btnSendRef.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +66,13 @@ public class MainActivity extends AppCompatActivity {
                 String chapText = spinChapter.getSelectedItem().toString();
                 String verseText = spinVerse.getSelectedItem().toString();
                 Toast.makeText(MainActivity.this, bookText + " " + chapText + ":" + verseText, Toast.LENGTH_LONG).show();
+
+                //Code to hook up API to collect verse from reference
+                String bibleVerse = ""; //Empty quotes to be replaced with API call
+
+                //Code to store verse in Parse prior to sending to random user
+                SendReference referenceSender = new SendReference();
+                referenceSender.sendReference(bibleVerse);
             }
         });
     }

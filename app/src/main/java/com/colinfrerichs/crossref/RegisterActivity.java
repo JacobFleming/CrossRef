@@ -28,10 +28,12 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        //Password fields and Sign up Button
         mPasswordRegister = (EditText) findViewById(R.id.createPasswordText);
         mConfirmPasswordRegister = (EditText) findViewById(R.id.confirmPasswordText);
         mSignUpButton = (Button) findViewById(R.id.registerButton);
 
+        //Checks password fields and registers user
         mSignUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -41,6 +43,7 @@ public class RegisterActivity extends AppCompatActivity {
                 password = password.trim();
                 confirmPassword = confirmPassword.trim();
 
+                //Empty field or mismatching passwords
                 if ((confirmPassword.isEmpty() || password.isEmpty()) && (!password.equals(confirmPassword))) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
                     builder.setMessage(R.string.sign_up_error_message);
@@ -82,6 +85,7 @@ public class RegisterActivity extends AppCompatActivity {
                                             ParseUser.logOut();
                                             startActivity(intent);
                                         } else {
+                                            //no success
                                             AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
                                             builder.setMessage(R.string.update_user_error);
                                             builder.setTitle(R.string.sign_up_error_title);
@@ -94,6 +98,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
                             } else {
+                                //no success
                                 AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
                                 builder.setMessage(R.string.sign_up_error_parse);
                                 builder.setTitle(R.string.sign_up_error_title);
@@ -108,6 +113,7 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
+    //Saves the randomly generated username to the users Preferences folder
     private void SaveUserData(String user) {
         SharedPreferences mPref = getSharedPreferences(SHARED_PREF_FILENAME, MODE_PRIVATE);
         SharedPreferences.Editor mEditor = mPref.edit();
@@ -116,8 +122,5 @@ public class RegisterActivity extends AppCompatActivity {
         mEditor.putString(id, user);
         mEditor.commit();
     }
-    private String loadUserData() {
-        SharedPreferences mPref = getSharedPreferences(SHARED_PREF_FILENAME, MODE_PRIVATE);
-        return mPref.getString(id, "");
-    }
+
 }

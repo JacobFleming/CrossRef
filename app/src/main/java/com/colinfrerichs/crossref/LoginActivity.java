@@ -28,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        //Sends user to Register
         mSignUpText = (TextView) findViewById(R.id.signUpText);
         mSignUpText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,12 +38,15 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        //Password Field and Login Button
         mPasswordLogin = (EditText) findViewById(R.id.passwordField);
         loginButton = (Button) findViewById(R.id.loginButton);
 
+        //Checks credentials and Logs in
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Empty password field
                 if (mPasswordLogin.getText().toString().equals("")) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                     builder.setMessage(R.string.login_error_message);
@@ -62,6 +66,7 @@ public class LoginActivity extends AppCompatActivity {
                                 Intent myIntent = new Intent(LoginActivity.this, MainActivity.class);
                                 startActivity(myIntent);
                             } else {
+                                //no success
                                 AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                                 builder.setMessage(R.string.login_error_message);
                                 builder.setTitle(R.string.login_error_title);
@@ -76,6 +81,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    //Gets Username
     private String loadUserData() {
         SharedPreferences mPref = getSharedPreferences(SHARED_PREF_FILENAME, MODE_PRIVATE);
         return mPref.getString(id, "");
