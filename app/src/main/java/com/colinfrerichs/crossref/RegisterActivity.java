@@ -22,6 +22,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private static final String SHARED_PREF_FILENAME = "SECRETS";
     private static final String id = "user";
+    private static final String TempUsername = "TempUsername";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +56,7 @@ public class RegisterActivity extends AppCompatActivity {
                     //create the new user
                     final ParseUser newUser = new ParseUser();
                     newUser.setPassword(password);
-                    newUser.setUsername("Word");
+                    newUser.setUsername(TempUsername);
                     final String finalPassword = password;
                     newUser.signUpInBackground(new SignUpCallback() {
                         @Override

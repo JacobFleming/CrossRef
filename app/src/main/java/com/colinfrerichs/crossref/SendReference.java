@@ -1,8 +1,6 @@
 package com.colinfrerichs.crossref;
 
-import com.parse.ParseClassName;
 import com.parse.ParseObject;
-import com.parse.ParseQuery;
 
 /**
  * Created by Owner on 11/19/2015.
