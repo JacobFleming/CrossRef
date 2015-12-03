@@ -40,14 +40,10 @@ public class LoginActivity extends AppCompatActivity {
                     // The query was successful.
                     for (int i = 0; i < objects.size(); i++) {
                         parseUsers.add(i, objects.get(i));
-                        System.out.print("shit");
-
-
-
                     }
                 } else {
                     // Something went wrong.
-                    System.out.print("poop");
+
                 }
             }
         });

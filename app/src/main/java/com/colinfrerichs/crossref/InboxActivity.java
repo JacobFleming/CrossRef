@@ -43,6 +43,7 @@ public class InboxActivity extends AppCompatActivity {
                 public void done(List<ParseObject> list, com.parse.ParseException e) {
                     for(int i = 0; i < list.size(); i++){
                         messages.add(i, list.get(i).get("verse").toString());
+                        System.out.print(messages);
                     }
                 }
             });
