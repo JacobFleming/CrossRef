@@ -30,6 +30,7 @@ public class SendReference {
         int i = random.nextInt(mParseUsers.size());
         receivingUser = mParseUsers.get(i).getUsername();
 
+
         //Code to store verse in Parse
         ParseObject message = new ParseObject("BibleVerse");
 
