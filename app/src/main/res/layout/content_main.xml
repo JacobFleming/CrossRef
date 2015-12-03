@@ -56,5 +56,6 @@
         android:id="@+id/btnInbox"
         android:layout_below="@+id/btnSendReference"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
         android:textColor="#ffffff" />
 </RelativeLayout>
