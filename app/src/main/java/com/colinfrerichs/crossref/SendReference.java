@@ -1,13 +1,11 @@
 package com.colinfrerichs.crossref;
 
-import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
-import com.parse.ParseQuery;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 /**
@@ -17,38 +15,32 @@ public class SendReference {
 
     public SendReference(){}
 
-    ArrayList<ParseUser> parseUsers;
+    ArrayList<ParseUser> mParseUsers;
     String receivingUser;
 
     public void sendReference(String verse){
 
-        parseUsers = new ArrayList<ParseUser>();
+        mParseUsers = LoginActivity.parseUsers;
 
-        ParseQuery<ParseUser> query = ParseUser.getQuery();
-        query.findInBackground(new FindCallback<ParseUser>() {
-            public void done(List<ParseUser> objects, ParseException e) {
-                if (e == null) {
-                    // The query was successful.
-                    for(int i = 0; i < objects.size(); i++) {
-                        parseUsers.add(i, objects.get(i));
-                    }
-                } else {
-                    // Something went wrong.
-                }
-            }
-        });
+
+        System.out.print("this is size" + mParseUsers.size());
 
         //Code to find random user
         Random random = new Random();
-        int i = random.nextInt(parseUsers.size());
-        receivingUser = parseUsers.get(i).getUsername();
+        int i = random.nextInt(mParseUsers.size());
+        receivingUser = mParseUsers.get(i).getUsername();
 
         //Code to store verse in Parse
         ParseObject message = new ParseObject("BibleVerse");
 
         message.put("verse", verse);
         message.put("receivingUser", receivingUser);
+        message.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
 
+            }
+        });
         //Code to send reference to random user
 
         //Code to delete reference

@@ -10,9 +10,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.parse.FindCallback;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -23,11 +29,36 @@ public class LoginActivity extends AppCompatActivity {
     private static final String SHARED_PREF_FILENAME = "SECRETS";
     private static final String id = "user";
 
+    public static final ArrayList<ParseUser> parseUsers = new ArrayList<ParseUser>();
+
+    public void setParseUsers(){
+
+        ParseQuery<ParseUser> query = ParseUser.getQuery();
+        query.findInBackground(new FindCallback<ParseUser>() {
+            public void done(List<ParseUser> objects, ParseException e) {
+                if (e == null) {
+                    // The query was successful.
+                    for (int i = 0; i < objects.size(); i++) {
+                        parseUsers.add(i, objects.get(i));
+                        System.out.print("shit");
+
+
+
+                    }
+                } else {
+                    // Something went wrong.
+                    System.out.print("poop");
+                }
+            }
+        });
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        setParseUsers();
         //Sends user to Register
         mSignUpText = (TextView) findViewById(R.id.signUpText);
         mSignUpText.setOnClickListener(new View.OnClickListener() {
