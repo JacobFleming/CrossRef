@@ -37,7 +37,8 @@ public class InboxActivity extends AppCompatActivity {
         final ArrayList<String> messages = new ArrayList<String>();
 
         try{
-            ParseQuery<ParseObject> parseVerses = ParseQuery.getQuery("BibleVerse").whereEqualTo("receivingUser", ParseUser.getCurrentUser().getUsername());
+            ParseQuery<ParseObject> parseVerses = ParseQuery.getQuery("BibleVerse");
+            parseVerses.whereEqualTo("receivingUser", ParseUser.getCurrentUser().getUsername());
             parseVerses.findInBackground(new FindCallback<ParseObject>() {
                 @Override
                 public void done(List<ParseObject> list, com.parse.ParseException e) {
