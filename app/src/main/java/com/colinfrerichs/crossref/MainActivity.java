@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, bookText + " " + chapText + ":" + verseText, Toast.LENGTH_LONG).show();
 
                 //Code to hook up API to collect verse from reference
-                String bibleVerse = ""; //Empty quotes to be replaced with API call
+                String bibleVerse = bookText + " " + chapText + ":" + verseText; //Empty quotes to be replaced with API call
 
                 //Code to store verse in Parse prior to sending to random user
                 SendReference referenceSender = new SendReference();
