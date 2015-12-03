@@ -54,7 +54,7 @@
         android:background="@drawable/roundedbuttons"
         android:text="Verse Inbox"
         android:id="@+id/btnInbox"
-        android:layout_alignBottom="@+id/spinChapter"
+        android:layout_below="@+id/btnSendReference"
         android:layout_centerHorizontal="true"
         android:textColor="#ffffff" />
 </RelativeLayout>

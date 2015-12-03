@@ -25,6 +25,6 @@
         android:layout_height="wrap_content"
         android:text="New Button"
         android:id="@+id/button"
-        android:layout_alignBottom="@+id/messageList"
+        android:layout_below="@+id/messageList"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>
