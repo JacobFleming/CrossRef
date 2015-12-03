@@ -23,7 +23,7 @@ public class SendReference {
         mParseUsers = LoginActivity.parseUsers;
 
 
-        System.out.print("this is size" + mParseUsers.size());
+      //  System.out.print("this is size" + mParseUsers.size());
 
         //Code to find random user
         Random random = new Random();

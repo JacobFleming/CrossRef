@@ -14,8 +14,11 @@ import com.parse.ParseUser;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 public class InboxActivity extends AppCompatActivity {
 
+    private ArrayList<String> messages;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,16 +28,16 @@ public class InboxActivity extends AppCompatActivity {
 
         ListView messageList = (ListView) findViewById(R.id.messageList);
 
-        List<String> messages = getMessages();
+         messages = getMessages();
 
-        ArrayAdapter<String> messagesAdapter = new ArrayAdapter<String>(this, R.layout.list_item, messages);
+        final ArrayAdapter<String> messagesAdapter = new ArrayAdapter<String>(this, R.layout.list_item, messages);
 
         messageList.setAdapter(messagesAdapter);
 
     }
 
-    public List<String> getMessages(){
-        final List<String> messages = new ArrayList<String>();
+    public ArrayList<String> getMessages(){
+        final ArrayList<String> messages = new ArrayList<String>();
 
         try{
             ParseQuery<ParseObject> parseVerses = ParseQuery.getQuery("BibleVerse");
