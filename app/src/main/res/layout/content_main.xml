@@ -47,4 +47,14 @@
         android:layout_marginTop="43dp"
         android:background="@drawable/roundedbuttons"
         android:textColor="#ffffff" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/roundedbuttons"
+        android:text="Verse Inbox"
+        android:id="@+id/btnInbox"
+        android:layout_alignBottom="@+id/spinChapter"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffffff" />
 </RelativeLayout>
