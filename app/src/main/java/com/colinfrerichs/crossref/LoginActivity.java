@@ -34,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     public void setParseUsers(){
 
         ParseQuery<ParseUser> query = ParseUser.getQuery();
+        query.whereNotEqualTo("username", loadUserData());
         query.findInBackground(new FindCallback<ParseUser>() {
             public void done(List<ParseUser> objects, ParseException e) {
                 if (e == null) {
