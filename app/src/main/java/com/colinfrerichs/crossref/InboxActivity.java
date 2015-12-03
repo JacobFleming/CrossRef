@@ -5,11 +5,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.parse.FindCallback;
+import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,17 +30,18 @@ public class InboxActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        ListView messageList = (ListView) findViewById(R.id.messageList);
+        TextView message = (TextView) findViewById(R.id.txtMessage);
 
-         /*messages =*/ getMessages();
 
-        final ArrayAdapter<String> messagesAdapter = new ArrayAdapter<String>(this, R.layout.list_item, messages);
 
-        messageList.setAdapter(messagesAdapter);
+        try{
+            message.setText(ParseQuery.getQuery("BibleVerse").whereEqualTo("receivingUser", ParseUser.getCurrentUser().getUsername()).getFirst().getString("verse"));
+        }
+        catch(ParseException e){}
 
     }
 
-    public /*ArrayList<String> */ void getMessages(){
+    public /*ArrayList<String> */ String getMessages(){
         messages = new ArrayList<String>();
 
         try{
@@ -51,10 +56,10 @@ public class InboxActivity extends AppCompatActivity {
                     }
                 }
             });
-
+                    return messages.get(0);
         }
         catch(NullPointerException e) {}
-
+return null;
 
        // return messages;
     }
