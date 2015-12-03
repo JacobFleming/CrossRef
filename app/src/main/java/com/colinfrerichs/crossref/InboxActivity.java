@@ -27,7 +27,7 @@ public class InboxActivity extends AppCompatActivity {
 
         List<String> messages = getMessages();
 
-        ArrayAdapter<String> messagesAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, messages);
+        ArrayAdapter<String> messagesAdapter = new ArrayAdapter<String>(this, R.layout.list_item, messages);
 
         messageList.setAdapter(messagesAdapter);
 
