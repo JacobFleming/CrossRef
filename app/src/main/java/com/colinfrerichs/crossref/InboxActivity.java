@@ -25,7 +25,7 @@ public class InboxActivity extends AppCompatActivity {
 
         ListView messageList = (ListView) findViewById(R.id.messageList);
 
-        List<String> messages = getMessages();
+        ArrayList<String> messages = getMessages();
 
         ArrayAdapter<String> messagesAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, messages);
 
