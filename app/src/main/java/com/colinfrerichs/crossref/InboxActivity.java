@@ -28,7 +28,7 @@ public class InboxActivity extends AppCompatActivity {
 
         ListView messageList = (ListView) findViewById(R.id.messageList);
 
-         messages = getMessages();
+         /*messages =*/ getMessages();
 
         final ArrayAdapter<String> messagesAdapter = new ArrayAdapter<String>(this, R.layout.list_item, messages);
 
@@ -36,8 +36,8 @@ public class InboxActivity extends AppCompatActivity {
 
     }
 
-    public ArrayList<String> getMessages(){
-        final ArrayList<String> messages = new ArrayList<String>();
+    public /*ArrayList<String> */ void getMessages(){
+        messages = new ArrayList<String>();
 
         try{
             ParseQuery<ParseObject> parseVerses = ParseQuery.getQuery("BibleVerse");
@@ -56,6 +56,6 @@ public class InboxActivity extends AppCompatActivity {
         catch(NullPointerException e) {}
 
 
-        return messages;
+       // return messages;
     }
 }
