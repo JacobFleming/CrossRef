@@ -17,20 +17,21 @@ public class SendReference {
 
     public SendReference(){}
 
-
+    ArrayList<ParseUser> parseUsers;
+    String receivingUser;
 
     public void sendReference(String verse){
 
-
-        final ArrayList<ParseUser> parseUsers = new ArrayList<ParseUser>();
+        parseUsers = new ArrayList<ParseUser>();
 
         ParseQuery<ParseUser> query = ParseUser.getQuery();
         query.findInBackground(new FindCallback<ParseUser>() {
             public void done(List<ParseUser> objects, ParseException e) {
                 if (e == null) {
                     // The query was successful.
-                    for(int i = 0; i < objects.size(); i++)
-                    parseUsers.add(i, objects.get(i));
+                    for(int i = 0; i < objects.size(); i++) {
+                        parseUsers.add(i, objects.get(i));
+                    }
                 } else {
                     // Something went wrong.
                 }
@@ -40,7 +41,7 @@ public class SendReference {
         //Code to find random user
         Random random = new Random();
         int i = random.nextInt(parseUsers.size());
-        String receivingUser = parseUsers.get(i).getUsername();
+        receivingUser = parseUsers.get(i).getUsername();
 
         //Code to store verse in Parse
         ParseObject message = new ParseObject("BibleVerse");
@@ -53,4 +54,6 @@ public class SendReference {
         //Code to delete reference
 
     }
+
+
 }

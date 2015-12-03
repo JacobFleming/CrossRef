@@ -13,4 +13,18 @@
     tools:context="com.colinfrerichs.crossref.InboxActivity"
     tools:showIn="@layout/activity_inbox">
 
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/messageList"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/button"
+        android:layout_alignBottom="@+id/messageList"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

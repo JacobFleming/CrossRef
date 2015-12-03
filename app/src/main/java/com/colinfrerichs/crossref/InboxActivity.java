@@ -1,11 +1,18 @@
 package com.colinfrerichs.crossref;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import com.parse.FindCallback;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class InboxActivity extends AppCompatActivity {
 
@@ -16,14 +23,34 @@ public class InboxActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        ListView messageList = (ListView) findViewById(R.id.messageList);
+
+        List<String> messages = getMessages();
+
+        ArrayAdapter<String> messagesAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, messages);
+
+        messageList.setAdapter(messagesAdapter);
+
     }
 
+    public ArrayList<String> getMessages(){
+        final ArrayList<String> messages = new ArrayList<String>();
+
+        try{
+            ParseQuery<ParseObject> parseVerses = ParseQuery.getQuery("BibleVerse").whereEqualTo("receivingUser", ParseUser.getCurrentUser().getUsername());
+            parseVerses.findInBackground(new FindCallback<ParseObject>() {
+                @Override
+                public void done(List<ParseObject> list, com.parse.ParseException e) {
+                    for(int i = 0; i < list.size(); i++){
+                        messages.add(i, list.get(i).get("verse").toString());
+                    }
+                }
+            });
+
+        }
+        catch(NullPointerException e) {}
+
+
+        return messages;
+    }
 }
