@@ -33,4 +33,15 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="75dp"
         android:textColor="#ffffff" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dismiss"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/roundedbuttons"
+        android:id="@+id/btnDismiss"
+        android:layout_below="@+id/txtMessage"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffffff" />
 </RelativeLayout>

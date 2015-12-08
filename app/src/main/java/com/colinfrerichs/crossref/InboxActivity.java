@@ -35,6 +35,7 @@ public class InboxActivity extends AppCompatActivity {
 
         TextView message = (TextView) findViewById(R.id.txtMessage);
         Button btnLogout = (Button) findViewById(R.id.btnLogoutInbox);
+        Button btnDismiss = (Button) findViewById(R.id.btnDismiss);
 
 
         try{
@@ -50,6 +51,13 @@ public class InboxActivity extends AppCompatActivity {
             }
         });
 
+        btnDismiss.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteMessage();
+                finish();
+            }
+        });
     }
 
     public /*ArrayList<String> */ String getMessages(){
@@ -61,7 +69,7 @@ public class InboxActivity extends AppCompatActivity {
             parseVerses.findInBackground(new FindCallback<ParseObject>() {
                 @Override
                 public void done(List<ParseObject> list, com.parse.ParseException e) {
-                    for(int i = 0; i < list.size(); i++){
+                    for (int i = 0; i < list.size(); i++) {
                         messages.add(list.get(i).getString("verse"));
                         System.out.print(messages.get(i));
                     }
@@ -73,5 +81,28 @@ public class InboxActivity extends AppCompatActivity {
 return null;
 
        // return messages;
+    }
+
+    public void deleteMessage() {
+        if(messages.get(0) != null){
+            try{
+                ParseQuery<ParseObject> parseVerses = ParseQuery.getQuery("BibleVerse");
+                parseVerses.whereEqualTo("receivingUser", ParseUser.getCurrentUser().getUsername());
+                parseVerses.whereEqualTo("verse", messages.get(0));
+                parseVerses.findInBackground(new FindCallback<ParseObject>() {
+                    @Override
+                    public void done(List<ParseObject> list, ParseException e) {
+                        try {
+                            ParseObject.deleteAll(list);
+                        } catch (ParseException e1) {
+                            e1.printStackTrace();
+                        }
+                    }
+                });
+
+            }
+            catch(NullPointerException e) { e.printStackTrace(); }
+        }
+
     }
 }
