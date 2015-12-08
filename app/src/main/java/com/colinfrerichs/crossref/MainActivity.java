@@ -509,6 +509,7 @@ public class MainActivity extends AppCompatActivity {
                         android.R.layout.simple_spinner_item, verses_bible);
                 spinVerse.setAdapter(verseAdapter);
                 break;
+            //TODO
             case "Ezra":    chapters_bible = new ArrayList<Integer>();
                 chapter = 1;
                 for (int i = 0; i < 50; i++) {
