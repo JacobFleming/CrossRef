@@ -42,7 +42,10 @@ public class InboxActivity extends AppCompatActivity {
 
         try{
             message.setText(ParseQuery.getQuery("BibleVerse").whereEqualTo("receivingUser", ParseUser.getCurrentUser().getUsername()).getFirst().getString("verse"));
-            btnDismiss.setText("Dismiss");
+            if(!message.getText().equals("No verses have been received.")){
+                btnDismiss.setText("Dismiss");
+
+            }
         }
         catch(ParseException e){}
 
