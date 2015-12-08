@@ -124,6 +124,8 @@ return null;
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            ParseUser.logOut();
+            startActivity(new Intent(InboxActivity.this, LoginActivity.class));
             return true;
         }
 
