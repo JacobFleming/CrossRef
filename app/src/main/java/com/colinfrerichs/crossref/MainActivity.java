@@ -81,81 +81,53 @@ public class MainActivity extends AppCompatActivity {
                 String verseText = spinVerse.getSelectedItem().toString();
                 Toast.makeText(MainActivity.this, bookText + " " + chapText + ":" + verseText, Toast.LENGTH_LONG).show();
 
-                    if (isNetworkAvailable()) {
-                        toggleRefresh();
+                //reset book text if 1 Samuel, 2 Samuel, ect.
 
-                        OkHttpClient client = new OkHttpClient();
-                        Request request = new Request.Builder()
-                                .url(forecastUrl)
-                                .build();
+                bibleURL = "https://www.biblegateway.com/passage/?search=" + bookText + "+" + chapText + "%3A" + verseText + "&version=ESV";
 
-                        Call call = client.newCall(request);
-                        call.enqueue(new Callback() {
+
+                OkHttpClient client = new OkHttpClient();
+                Request request = new Request.Builder()
+                        .url(bibleURL)
+                        .build();
+
+                Call call = client.newCall(request);
+                call.enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Request request, IOException e) {
+                        runOnUiThread(new Runnable() {
                             @Override
-                            public void onFailure(Request request, IOException e) {
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        toggleRefresh();
-                                    }
-                                });
-                                alertUserAboutError();
-                            }
-
-                            @Override
-                            public void onResponse(Response response) throws IOException {
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        toggleRefresh();
-                                    }
-                                });
-
-                                try {
-                                    String jsonData = response.body().string();
-                                    Log.v(TAG, jsonData);
-                                    if (response.isSuccessful()) {
-                                        mCurrentWeather = getCurrentDetails(jsonData);
-                                        runOnUiThread(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                updateDisplay();
-                                            }
-                                        });
-                                    } else {
-                                        alertUserAboutError();
-                                    }
-                                }
-                                catch (IOException e) {
-                                    Log.e(TAG, "Exception caught: ", e);
-                                }
-                                catch (JSONException e) {
-                                    Log.e(TAG, "Exception caught: ", e);
-                                }
+                            public void run() {
                             }
                         });
                     }
-                    else {
-                        Toast.makeText(this, getString(R.string.network_unavailable_message),
-                                Toast.LENGTH_LONG).show();
+
+                    @Override
+                    public void onResponse(final Response response) throws IOException {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                //Toast.makeText(getApplicationContext(), response.body().toString(), Toast.LENGTH_LONG);
+                            }
+                        });
+
+
+                        //Code to hook up API to collect verse from reference
+                        String bibleVerse = response.headers().;
+                        System.out.print(bibleVerse);
+                        //Code to store verse in Parse prior to sending to random user
+//                        SendReference referenceSender = new SendReference();
+//                        referenceSender.sendReference(bibleVerse);
                     }
+                });
 
-
-
-                //Code to hook up API to collect verse from reference
-                String bibleVerse = bookText + " " + chapText + ":" + verseText; //Empty quotes to be replaced with API call
-
-                //Code to store verse in Parse prior to sending to random user
-                SendReference referenceSender = new SendReference();
-                referenceSender.sendReference(bibleVerse);
-            }
-        });
-
-        Button btnInbox = (Button) findViewById(R.id.btnInbox);
-        btnInbox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, InboxActivity.class));
+                Button btnInbox = (Button) findViewById(R.id.btnInbox);
+                btnInbox.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(MainActivity.this, InboxActivity.class));
+                    }
+                });
             }
         });
     }
