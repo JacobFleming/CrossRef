@@ -109,4 +109,9 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(getApplicationContext(), "Please use logout in toolbar.", Toast.LENGTH_LONG).show();
+    }
 }
