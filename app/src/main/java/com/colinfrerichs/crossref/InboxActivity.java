@@ -81,7 +81,6 @@ return null;
             try{
                 ParseQuery<ParseObject> parseVerses = ParseQuery.getQuery("BibleVerse");
                 parseVerses.whereEqualTo("receivingUser", ParseUser.getCurrentUser().getUsername());
-                parseVerses.whereEqualTo("verse", messages.get(0));
                 parseVerses.findInBackground(new FindCallback<ParseObject>() {
                     @Override
                     public void done(List<ParseObject> list, ParseException e) {
