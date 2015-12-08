@@ -121,14 +121,29 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 bookUpdated();
+                //setVerse();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 spinBook.setSelection(0);
                 bookUpdated();
+                //setVerse();
             }
         });
+
+//        spinChapter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                setVerse();
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//                spinChapter.setSelection(0);
+//                setVerse();
+//            }
+//        });
 
         Button btnInbox = (Button) findViewById(R.id.btnInbox);
         btnInbox.setOnClickListener(new View.OnClickListener() {
