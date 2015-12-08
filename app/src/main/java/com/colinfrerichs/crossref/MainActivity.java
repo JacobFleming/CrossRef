@@ -24,8 +24,6 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Button btnLogoutMain = (Button) findViewById(R.id.btnLogoutMain);
-
         //Creating the spinners that will choose the reference
         final Spinner spinBook = (Spinner) findViewById(R.id.spinBook);
         final Spinner spinChapter = (Spinner) findViewById(R.id.spinChapter);
@@ -35,13 +33,6 @@ public class MainActivity extends AppCompatActivity {
                                                  R.array.books_bible, android.R.layout.simple_spinner_item);
         spinBook.setAdapter(bookAdapter);
 
-        btnLogoutMain.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               // ParseUser.logOut();
-                startActivity(new Intent(MainActivity.this, LoginActivity.class));
-            }
-        });
 
         List<Integer> chapters_bible = new ArrayList<Integer>();
         int chapter = 1;

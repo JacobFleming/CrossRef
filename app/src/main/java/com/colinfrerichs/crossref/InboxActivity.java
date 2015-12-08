@@ -23,6 +23,10 @@ import java.util.List;
 
 public class InboxActivity extends AppCompatActivity {
 
+    TextView message = (TextView) findViewById(R.id.txtMessage);
+    Button btnDismiss = (Button) findViewById(R.id.btnDismiss);
+
+
     private ArrayList<String> messages;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,23 +35,13 @@ public class InboxActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        TextView message = (TextView) findViewById(R.id.txtMessage);
-        Button btnLogout = (Button) findViewById(R.id.btnLogoutInbox);
-        Button btnDismiss = (Button) findViewById(R.id.btnDismiss);
 
+        message.setText("");
 
         try{
             message.setText(ParseQuery.getQuery("BibleVerse").whereEqualTo("receivingUser", ParseUser.getCurrentUser().getUsername()).getFirst().getString("verse"));
         }
         catch(ParseException e){}
-
-        btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ParseUser.logOut();
-                startActivity(new Intent(InboxActivity.this, LoginActivity.class));
-            }
-        });
 
         btnDismiss.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,7 +76,7 @@ return null;
     }
 
     public void deleteMessage() {
-        if(messages.get(0) != null){
+        if(!message.getText().equals("")){
             try{
                 ParseQuery<ParseObject> parseVerses = ParseQuery.getQuery("BibleVerse");
                 parseVerses.whereEqualTo("receivingUser", ParseUser.getCurrentUser().getUsername());
