@@ -37,7 +37,7 @@ public class InboxActivity extends AppCompatActivity {
 
         message = (TextView) findViewById(R.id.txtMessage);
         btnDismiss = (Button) findViewById(R.id.btnDismiss);
-        message.setText("");
+        message.setText("No verses have been received.");
 
         try{
             message.setText(ParseQuery.getQuery("BibleVerse").whereEqualTo("receivingUser", ParseUser.getCurrentUser().getUsername()).getFirst().getString("verse"));
@@ -77,7 +77,7 @@ return null;
     }
 
     public void deleteMessage() {
-        if(!message.getText().equals("")){
+        if(!message.getText().equals("No verses have been received.")){
             try{
                 ParseQuery<ParseObject> parseVerses = ParseQuery.getQuery("BibleVerse");
                 parseVerses.whereEqualTo("receivingUser", ParseUser.getCurrentUser().getUsername());
