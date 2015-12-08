@@ -1,9 +1,12 @@
 package com.colinfrerichs.crossref;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -31,13 +34,21 @@ public class InboxActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         TextView message = (TextView) findViewById(R.id.txtMessage);
-
+        Button btnLogout = (Button) findViewById(R.id.btnLogoutInbox);
 
 
         try{
             message.setText(ParseQuery.getQuery("BibleVerse").whereEqualTo("receivingUser", ParseUser.getCurrentUser().getUsername()).getFirst().getString("verse"));
         }
         catch(ParseException e){}
+
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ParseUser.logOut();
+                startActivity(new Intent(InboxActivity.this, LoginActivity.class));
+            }
+        });
 
     }
 
