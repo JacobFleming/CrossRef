@@ -58,4 +58,15 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:textColor="#ffffff" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:id="@+id/btnLogoutMain"
+        android:background="@drawable/roundedbuttons"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="75dp"
+        android:textColor="#ffffff" />
 </RelativeLayout>
