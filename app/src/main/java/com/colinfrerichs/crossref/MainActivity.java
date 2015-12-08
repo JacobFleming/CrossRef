@@ -1517,7 +1517,7 @@ public class MainActivity extends AppCompatActivity {
                     verse++;
                 }
 
-                verseAdapter = new ArrayAdapter<Integer>(this,
+                verseAdapter = new ArrayAdapter<>(this,
                         android.R.layout.simple_spinner_item, verses_bible);
                 spinVerse.setAdapter(verseAdapter);
                 break;
