@@ -113,5 +113,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Toast.makeText(getApplicationContext(), "Please use logout in toolbar.", Toast.LENGTH_LONG).show();
+        //Gunnar is a stupid moron and I hate him.
     }
 }
