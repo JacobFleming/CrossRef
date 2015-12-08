@@ -14,7 +14,13 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.parse.ParseUser;
+import com.squareup.okhttp.Call;
+import com.squareup.okhttp.Callback;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private Spinner spinBook;
     private Spinner spinChapter;
     private Spinner spinVerse;
+    private String bibleURL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,19 +38,21 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        bibleURL = new String();
         //Creating the spinners that will choose the reference
         spinBook = (Spinner) findViewById(R.id.spinBook);
         spinChapter = (Spinner) findViewById(R.id.spinChapter);
         spinVerse = (Spinner) findViewById(R.id.spinVerse);
 
-        final ArrayAdapter<CharSequence> bookAdapter = ArrayAdapter.createFromResource(this,
+
+        ArrayAdapter<CharSequence> bookAdapter = ArrayAdapter.createFromResource(this,
                                                  R.array.books_bible, android.R.layout.simple_spinner_item);
         spinBook.setAdapter(bookAdapter);
 
 
         List<Integer> chapters_bible = new ArrayList<Integer>();
         int chapter = 1;
-        for(int i = 0; i < 50; i++){
+        for(int i = 0; i < 150; i++){
             chapters_bible.add(chapter);
             chapter++;
         }
@@ -54,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
         List<Integer> verses_bible = new ArrayList<Integer>();
         int verse = 1;
-        for(int i = 0; i < 31; i++){
+        for(int i = 0; i < 176; i++){
             verses_bible.add(verse);
             verse++;
         }
@@ -73,20 +82,53 @@ public class MainActivity extends AppCompatActivity {
                 String verseText = spinVerse.getSelectedItem().toString();
                 Toast.makeText(MainActivity.this, bookText + " " + chapText + ":" + verseText, Toast.LENGTH_LONG).show();
 
-                //Code to hook up API to collect verse from reference
-                String bibleVerse = bookText + " " + chapText + ":" + verseText; //Empty quotes to be replaced with API call
+                //reset book text if 1 Samuel, 2 Samuel, ect.
 
-                //Code to store verse in Parse prior to sending to random user
-                SendReference referenceSender = new SendReference();
-                referenceSender.sendReference(bibleVerse);
-            }
-        });
+                bibleURL = "https://www.biblegateway.com/passage/?search=" + bookText + "+" + chapText + "%3A" + verseText + "&version=ESV";
 
-        Button btnInbox = (Button) findViewById(R.id.btnInbox);
-        btnInbox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, InboxActivity.class));
+
+                OkHttpClient client = new OkHttpClient();
+                Request request = new Request.Builder()
+                        .url(bibleURL)
+                        .build();
+
+                Call call = client.newCall(request);
+                call.enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Request request, IOException e) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onResponse(final Response response) throws IOException {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                //Toast.makeText(getApplicationContext(), response.body().toString(), Toast.LENGTH_LONG);
+                            }
+                        });
+
+
+                        //Code to hook up API to collect verse from reference
+                        String bibleVerse = response.headers().;
+                        System.out.print(bibleVerse);
+                        //Code to store verse in Parse prior to sending to random user
+//                        SendReference referenceSender = new SendReference();
+//                        referenceSender.sendReference(bibleVerse);
+                    }
+                });
+
+                Button btnInbox = (Button) findViewById(R.id.btnInbox);
+                btnInbox.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(MainActivity.this, InboxActivity.class));
+                    }
+                });
             }
         });
         spinBook.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
