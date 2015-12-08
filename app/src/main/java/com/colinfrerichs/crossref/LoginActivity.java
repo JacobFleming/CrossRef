@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.parse.FindCallback;
 import com.parse.LogInCallback;
@@ -113,5 +114,10 @@ public class LoginActivity extends AppCompatActivity {
     private String loadUserData() {
         SharedPreferences mPref = getSharedPreferences(SHARED_PREF_FILENAME, MODE_PRIVATE);
         return mPref.getString(id, "");
+    }
+
+    @Override
+    public void onBackPressed() {
+
     }
 }
