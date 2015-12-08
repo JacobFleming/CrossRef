@@ -77,9 +77,9 @@ public class MainActivity extends AppCompatActivity {
         btnSendRef.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String bookText = spinBook.getSelectedItem().toString();
-                String chapText = spinChapter.getSelectedItem().toString();
-                String verseText = spinVerse.getSelectedItem().toString();
+                final String bookText = spinBook.getSelectedItem().toString();
+                final String chapText = spinChapter.getSelectedItem().toString();
+                final String verseText = spinVerse.getSelectedItem().toString();
                 Toast.makeText(MainActivity.this, bookText + " " + chapText + ":" + verseText, Toast.LENGTH_LONG).show();
 
                 //reset book text if 1 Samuel, 2 Samuel, ect.
@@ -87,41 +87,41 @@ public class MainActivity extends AppCompatActivity {
                 bibleURL = "https://www.biblegateway.com/passage/?search=" + bookText + "+" + chapText + "%3A" + verseText + "&version=ESV";
 
 
-                OkHttpClient client = new OkHttpClient();
-                Request request = new Request.Builder()
-                        .url(bibleURL)
-                        .build();
-
-                Call call = client.newCall(request);
-                call.enqueue(new Callback() {
-                    @Override
-                    public void onFailure(Request request, IOException e) {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                            }
-                        });
-                    }
-
-                    @Override
-                    public void onResponse(final Response response) throws IOException {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                //Toast.makeText(getApplicationContext(), response.body().toString(), Toast.LENGTH_LONG);
-                            }
-                        });
+//                OkHttpClient client = new OkHttpClient();
+//                Request request = new Request.Builder()
+//                        .url(bibleURL)
+//                        .build();
+//
+//                Call call = client.newCall(request);
+//                call.enqueue(new Callback() {
+//                    @Override
+//                    public void onFailure(Request request, IOException e) {
+//                        runOnUiThread(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                            }
+//                        });
+//                    }
+//
+//                    @Override
+//                    public void onResponse(final Response response) throws IOException {
+//                        runOnUiThread(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                //Toast.makeText(getApplicationContext(), response.body().toString(), Toast.LENGTH_LONG);
+//                            }
+//                        });
 
 
                         //Code to hook up API to collect verse from reference
-                      //  String bibleVerse = response.headers();
+                        String bibleVerse = bookText + " " + chapText + ":" + verseText;
                    //     System.out.print(bibleVerse);
                         //Code to store verse in Parse prior to sending to random user
-//                        SendReference referenceSender = new SendReference();
-//                        referenceSender.sendReference(bibleVerse);
+                        SendReference referenceSender = new SendReference();
+                        referenceSender.sendReference(bibleVerse);
                     }
-                });
-            }
+//                });
+//            }
         });
         spinBook.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
