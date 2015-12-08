@@ -38,9 +38,11 @@ public class InboxActivity extends AppCompatActivity {
         message = (TextView) findViewById(R.id.txtMessage);
         btnDismiss = (Button) findViewById(R.id.btnDismiss);
         message.setText("No verses have been received.");
+        btnDismiss.setText("Return to Send Reference");
 
         try{
             message.setText(ParseQuery.getQuery("BibleVerse").whereEqualTo("receivingUser", ParseUser.getCurrentUser().getUsername()).getFirst().getString("verse"));
+            btnDismiss.setText("Dismiss");
         }
         catch(ParseException e){}
 
@@ -96,6 +98,9 @@ return null;
             catch(NullPointerException e) { e.printStackTrace(); }
         }
 
+        else{
+            finish();
+        }
     }
 
 
