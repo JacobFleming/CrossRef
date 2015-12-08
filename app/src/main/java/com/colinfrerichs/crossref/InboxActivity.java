@@ -24,6 +24,9 @@ import java.util.List;
 public class InboxActivity extends AppCompatActivity {
 
     TextView message;
+    String messageId;
+    ParseObject mParseObject;
+
     Button btnDismiss;
 
 
@@ -41,7 +44,10 @@ public class InboxActivity extends AppCompatActivity {
         btnDismiss.setText("Return to Send Reference");
 
         try{
-            message.setText(ParseQuery.getQuery("BibleVerse").whereEqualTo("receivingUser", ParseUser.getCurrentUser().getUsername()).getFirst().getString("verse"));
+            //message.setText(ParseQuery.getQuery("BibleVerse").whereEqualTo("receivingUser", ParseUser.getCurrentUser().getUsername()).getFirst().getString("verse"));
+            //messageId = ParseQuery.getQuery("BibleVerse").whereEqualTo("receivingUser", ParseUser.getCurrentUser().getUsername()).getFirst().getString("objectId");
+            mParseObject  = ParseQuery.getQuery("BibleVerse").whereEqualTo("receivingUser", ParseUser.getCurrentUser().getUsername()).getFirst();
+            message.setText(mParseObject.getString("verse"));
             if(!message.getText().equals("No verses have been received.")){
                 btnDismiss.setText("Dismiss");
 
@@ -83,9 +89,12 @@ return null;
 
     public void deleteMessage() {
         if(!message.getText().equals("No verses have been received.")){
-            try{
+
+             ParseObject.createWithoutData("BibleVerse",mParseObject.getObjectId()).deleteEventually();
+
+          /*  try{
                 ParseQuery<ParseObject> parseVerses = ParseQuery.getQuery("BibleVerse");
-                parseVerses.whereEqualTo("receivingUser", ParseUser.getCurrentUser().getUsername());
+                parseVerses.whereEqualTo("objectId",messageId /*"receivingUser", ParseUser.getCurrentUser().getUsername());
                 parseVerses.findInBackground(new FindCallback<ParseObject>() {
                     @Override
                     public void done(List<ParseObject> list, ParseException e) {
@@ -99,7 +108,7 @@ return null;
 
             }
             catch(NullPointerException e) { e.printStackTrace(); }
-        }
+        */}
 
         else{
             finish();
