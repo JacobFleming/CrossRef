@@ -205,27 +205,7 @@ public class MainActivity extends AppCompatActivity {
 
             //// TODO: 12/7/2015
             case "Exodus":
-                chapters_bible = new ArrayList<Integer>();
-                chapter = 1;
-                for (int i = 0; i < 40; i++) {
-                    chapters_bible.add(chapter);
-                    chapter++;
-                }
-
-                chapterAdapter = new ArrayAdapter<Integer>(this,
-                        android.R.layout.simple_spinner_item, chapters_bible);
-                spinChapter.setAdapter(chapterAdapter);
-
-                verses_bible = new ArrayList<Integer>();
-                verse = 1;
-                for (int i = 0; i < 31; i++) {
-                    verses_bible.add(verse);
-                    verse++;
-                }
-
-                verseAdapter = new ArrayAdapter<Integer>(this,
-                        android.R.layout.simple_spinner_item, verses_bible);
-                spinVerse.setAdapter(verseAdapter);
+               setChapter(40,51);
                 break;
             case "Leviticus":
                 chapters_bible = new ArrayList<Integer>();
@@ -1544,31 +1524,101 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+//// TODO: 12/8/2015 create database needed for set verse
 
-    public void setChapter(int numChapter) {
-        chapters_bible = new ArrayList<Integer>();
+    private void setChapter(int numChapter) {
+        chapters_bible = new ArrayList<>();
         chapter = 1;
         for (int i = 0; i < numChapter; i++) {
             chapters_bible.add(chapter);
             chapter++;
         }
 
-        chapterAdapter = new ArrayAdapter<Integer>(this,
+        chapterAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, chapters_bible);
         spinChapter.setAdapter(chapterAdapter);
 
-        verses_bible = new ArrayList<Integer>();
+
+        //deprecate if setVerse is implemented
+        verses_bible = new ArrayList<>();
         verse = 1;
         for (int i = 0; i < 31; i++) {
             verses_bible.add(verse);
             verse++;
         }
 
-        verseAdapter = new ArrayAdapter<Integer>(this,
+        verseAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, verses_bible);
         spinVerse.setAdapter(verseAdapter);
     }
-}
+
+    /**
+     * sets a maxverse based on highest verse in the book
+     * @param numChapter
+     * @param maxVerse
+     */
+    private void setChapter(int numChapter,int maxVerse) {
+        chapters_bible = new ArrayList<>();
+        chapter = 1;
+        for (int i = 0; i < numChapter; i++) {
+            chapters_bible.add(chapter);
+            chapter++;
+        }
+
+        chapterAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, chapters_bible);
+        spinChapter.setAdapter(chapterAdapter);
+
+
+
+        verses_bible = new ArrayList<>();
+        verse = 1;
+        for (int i = 0; i < maxVerse; i++) {
+            verses_bible.add(verse);
+            verse++;
+        }
+
+        verseAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, verses_bible);
+        spinVerse.setAdapter(verseAdapter);
+    }
+
+
+
+
+    /**
+     * You cannot create a set verse function for this unless we
+     * add a SQLite database containing all limits
+     * @param book
+     * @param chapter
+     */
+    /*
+    private void setVerse(){
+        String book = spinBook.getSelectedItem().toString();
+        //if you can make this int do that
+        String chapter = spinChapter.getSelectedItem().toString();
+           //use these to query database and get maxVerse
+
+
+        verses_bible = new ArrayList<>();
+        verse = 1;
+        for (int i = 0; i < maxVerse; i++) {
+            verses_bible.add(verse);
+            verse++;
+        }
+           //set spinVerse = verses_bible
+    }
+    */
+
+
+
+
+
+
+
+
+
+
 //}
 //        if(spinBook.getSelectedItem().toString().equals("Genesis")){
 //            List<Integer> chapters_bible = new ArrayList<Integer>();
@@ -1599,3 +1649,4 @@ public class MainActivity extends AppCompatActivity {
 //        }
 
 
+}
