@@ -23,8 +23,8 @@ import java.util.List;
 
 public class InboxActivity extends AppCompatActivity {
 
-    TextView message = (TextView) findViewById(R.id.txtMessage);
-    Button btnDismiss = (Button) findViewById(R.id.btnDismiss);
+    TextView message;
+    Button btnDismiss;
 
 
     private ArrayList<String> messages;
@@ -35,7 +35,8 @@ public class InboxActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
+        message = (TextView) findViewById(R.id.txtMessage);
+        btnDismiss = (Button) findViewById(R.id.btnDismiss);
         message.setText("");
 
         try{
