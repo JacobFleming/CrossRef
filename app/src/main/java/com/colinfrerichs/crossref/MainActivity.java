@@ -121,14 +121,6 @@ public class MainActivity extends AppCompatActivity {
 //                        referenceSender.sendReference(bibleVerse);
                     }
                 });
-
-                Button btnInbox = (Button) findViewById(R.id.btnInbox);
-                btnInbox.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        startActivity(new Intent(MainActivity.this, InboxActivity.class));
-                    }
-                });
             }
         });
         spinBook.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -144,6 +136,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button btnInbox = (Button) findViewById(R.id.btnInbox);
+        btnInbox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, InboxActivity.class));
+            }
+        });
 
     }
 

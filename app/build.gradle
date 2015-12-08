@@ -26,4 +26,5 @@ dependencies {
     compile 'com.android.support:design:23.0.1'
     compile 'com.squareup.okhttp:okhttp:2.5.0'
     compile files('libs/CrossRefDB-1.10.3.jar')
+    compile 'com.squareup.okio:okio:1.6.0'
 }
