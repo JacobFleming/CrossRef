@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         spinChapter = (Spinner) findViewById(R.id.spinChapter);
         spinVerse = (Spinner) findViewById(R.id.spinVerse);
 
-        ArrayAdapter<CharSequence> bookAdapter = ArrayAdapter.createFromResource(this,
+        final ArrayAdapter<CharSequence> bookAdapter = ArrayAdapter.createFromResource(this,
                                                  R.array.books_bible, android.R.layout.simple_spinner_item);
         spinBook.setAdapter(bookAdapter);
 
@@ -88,6 +89,20 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, InboxActivity.class));
             }
         });
+        spinBook.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                bookUpdated();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                spinBook.setSelection(0);
+                bookUpdated();
+            }
+        });
+
+
     }
 
     @Override
@@ -114,38 +129,1570 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
     @Override
     public void onBackPressed() {
         Toast.makeText(getApplicationContext(), "Please use logout in toolbar.", Toast.LENGTH_LONG).show();
     }
 
+    int chapter;
+    List<Integer> chapters_bible;
+    List<Integer> verses_bible;
+    ArrayAdapter<Integer> verseAdapter;
+    int verse;
+    ArrayAdapter<Integer> chapterAdapter;
+
     public void bookUpdated() {
-        if(spinBook.getSelectedItem().toString().equals("Genesis")){
-            List<Integer> chapters_bible = new ArrayList<Integer>();
-            int chapter = 1;
-            for(int i = 0; i < 50; i++){
-                chapters_bible.add(chapter);
-                chapter++;
-            }
+        switch (spinBook.getSelectedItem().toString()) {
+            case "Genesis":
+                 chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
 
-            ArrayAdapter<Integer> chapterAdapter = new ArrayAdapter<Integer>(this,
-                    android.R.layout.simple_spinner_item, chapters_bible);
-            spinChapter.setAdapter(chapterAdapter);
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
 
-            List<Integer> verses_bible = new ArrayList<Integer>();
-            int verse = 1;
-            for(int i = 0; i < 31; i++){
-                verses_bible.add(verse);
-                verse++;
-            }
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
 
-            ArrayAdapter<Integer> verseAdapter = new ArrayAdapter<Integer>(this,
-                    android.R.layout.simple_spinner_item, verses_bible);
-            spinVerse.setAdapter(verseAdapter);
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+
+            //// TODO: 12/7/2015
+            case "Exodus":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 40; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Leviticus":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 27; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Numbers":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 36; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Deuteronomy":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 34; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Joshua":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 24; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Judges":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 21; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Ruth":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 4; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "1 Samuel":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 31; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "2 Samuel":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 24; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "1 Kings":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 22; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "2 Kings":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 25; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "1 Chronicles":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 29; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "2 Chronicles":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 36; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Ezra":    chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Nehemiah":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Esther":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Job":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Psalms":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Proverbs":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Ecclesiastes":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Song of Solomon":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Isaiah":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Jeremiah":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Lamentations":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Ezekiel":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Daniel":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Hosea":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Joel":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Amos":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Obadiah":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Jonah":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Micah":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Nahum":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Habakkuk":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Zephaniah":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Haggai":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Zechariah":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Malachi":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Matthew":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Mark":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Luke":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "John":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Acts":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Romans":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "1 Corinthians":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "2 Corinthians":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Galatians":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Ephesians":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Philippians":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Colossians":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "1 Thessalonians":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "2 Thessalonians":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "1 Timothy":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "2 Timothy":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Titus":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Philemon":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Hebrews":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "James":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "1 Peter":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "2 Peter":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "1 John":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "2 John":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "3 John":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Jude":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+            case "Revelation":
+                chapters_bible = new ArrayList<Integer>();
+                chapter = 1;
+                for (int i = 0; i < 50; i++) {
+                    chapters_bible.add(chapter);
+                    chapter++;
+                }
+
+                chapterAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, chapters_bible);
+                spinChapter.setAdapter(chapterAdapter);
+
+                verses_bible = new ArrayList<Integer>();
+                verse = 1;
+                for (int i = 0; i < 31; i++) {
+                    verses_bible.add(verse);
+                    verse++;
+                }
+
+                verseAdapter = new ArrayAdapter<Integer>(this,
+                        android.R.layout.simple_spinner_item, verses_bible);
+                spinVerse.setAdapter(verseAdapter);
+                break;
+
+
         }
-
-        else if(spinBook.getSelectedItem().toString().equals("Exodus")){
-
-        }
+//
+//        if(spinBook.getSelectedItem().toString().equals("Genesis")){
+//            List<Integer> chapters_bible = new ArrayList<Integer>();
+//            int chapter = 1;
+//            for(int i = 0; i < 50; i++){
+//                chapters_bible.add(chapter);
+//                chapter++;
+//            }
+//
+//            ArrayAdapter<Integer> chapterAdapter = new ArrayAdapter<Integer>(this,
+//                    android.R.layout.simple_spinner_item, chapters_bible);
+//            spinChapter.setAdapter(chapterAdapter);
+//
+//            List<Integer> verses_bible = new ArrayList<Integer>();
+//            int verse = 1;
+//            for(int i = 0; i < 31; i++){
+//                verses_bible.add(verse);
+//                verse++;
+//            }
+//
+//            ArrayAdapter<Integer> verseAdapter = new ArrayAdapter<Integer>(this,
+//                    android.R.layout.simple_spinner_item, verses_bible);
+//            spinVerse.setAdapter(verseAdapter);
+//        }
+//
+//        else if(spinBook.getSelectedItem().toString().equals("Exodus")){
+//
+//        }
     }
 }
