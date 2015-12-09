@@ -324,10 +324,10 @@ public class MainActivity extends AppCompatActivity {
                 setChapter(16, 39);
                 break;
             case "1 Corinthians":
-                setChapter(16, 51);
+                setChapter(16, 58);
                 break;
             case "2 Corinthians":
-                setChapter(13,51);
+                setChapter(13,33);
                 break;
             case "Galatians":
                 setChapter(6, 31);
@@ -342,16 +342,16 @@ public class MainActivity extends AppCompatActivity {
                 setChapter(4, 29);
                 break;
             case "1 Thessalonians":
-                setChapter(5, 51);
+                setChapter(5, 28);
                 break;
             case "2 Thessalonians":
-                setChapter(3,51);
+                setChapter(3,20);
                 break;
             case "1 Timothy":
-                setChapter(6,51);
+                setChapter(6,25);
                 break;
             case "2 Timothy":
-                setChapter(4, 51);
+                setChapter(4, 26);
                 break;
             case "Titus":
                 setChapter(3, 16);
@@ -366,13 +366,13 @@ public class MainActivity extends AppCompatActivity {
                 setChapter(5, 27);
                 break;
             case "1 Peter":
-                setChapter(5);
+                setChapter(5, 25);
                 break;
             case "2 Peter":
-                setChapter(3);
+                setChapter(3, 22);
                 break;
             case "1 John":
-                setChapter(5);
+                setChapter(5, 29);
                 break;
             case "2 John":
                 setChapter(1, 13);
