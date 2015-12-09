@@ -195,22 +195,22 @@ public class MainActivity extends AppCompatActivity {
                 setChapter(40,51);
                 break;
             case "Leviticus":
-                setChapter(27,51);
+                setChapter(27,59);
                 break;
             case "Numbers":
-                setChapter(34, 51);
+                setChapter(34, 89);
                 break;
             case "Deuteronomy":
-                setChapter(36, 51);
+                setChapter(36, 68);
                 break;
             case "Joshua":
-                setChapter(24, 51);
+                setChapter(24, 63);
                 break;
             case "Judges":
-                setChapter(21, 51);
+                setChapter(21, 57);
                 break;
             case "Ruth":
-                setChapter(4, 51);
+                setChapter(4, 23);
                 break;
             case "1 Samuel":
                 setChapter(31, 51);
@@ -231,97 +231,97 @@ public class MainActivity extends AppCompatActivity {
                 setChapter(36, 51);
                 break;
             case "Ezra":
-                setChapter(10, 51);
+                setChapter(10, 70);
                 break;
             case "Nehemiah":
-                setChapter(13, 51);
+                setChapter(13, 73);
                 break;
             case "Esther":
-                setChapter(10, 51);
+                setChapter(10, 32);
                 break;
             case "Job":
-                setChapter(42, 51);
+                setChapter(42, 41);
                 break;
             case "Psalms":
-                setChapter(150, 51);
+                setChapter(150, 176);
                 break;
             case "Proverbs":
-                setChapter(31, 51);
+                setChapter(31, 36);
                 break;
             case "Ecclesiastes":
-                setChapter(12, 51);
+                setChapter(12, 29);
                 break;
             case "Song of Solomon":
                 setChapter(8, 51);
                 break;
             case "Isaiah":
-                setChapter(66, 51);
+                setChapter(66, 38);
                 break;
             case "Jeremiah":
-                setChapter(52, 51);
+                setChapter(52, 64);
                 break;
             case "Lamentations":
-                setChapter(5, 51);
+                setChapter(5, 66);
                 break;
             case "Ezekiel":
-                setChapter(48, 51);
+                setChapter(48, 63);
                 break;
             case "Daniel":
-                setChapter(12, 51);
+                setChapter(12, 49);
                 break;
             case "Hosea":
-                setChapter(14, 51);
+                setChapter(14, 23);
                 break;
             case "Joel":
-                setChapter(3, 51);
+                setChapter(3, 32);
                 break;
             case "Amos":
-                setChapter(9, 51);
+                setChapter(9, 27);
                 break;
             case "Obadiah":
-                setChapter(1, 51);
+                setChapter(1, 21);
                 break;
             case "Jonah":
-                setChapter(4, 51);
+                setChapter(4, 17);
                 break;
             case "Micah":
-                setChapter(7, 51);
+                setChapter(7, 20);
                 break;
             case "Nahum":
-                setChapter(3, 51);
+                setChapter(3, 19);
                 break;
             case "Habakkuk":
-                setChapter(3, 51);
+                setChapter(3, 20);
                 break;
             case "Zephaniah":
-                setChapter(3, 51);
+                setChapter(3, 20);
                 break;
             case "Haggai":
-                setChapter(2, 51);
+                setChapter(2, 23);
                 break;
             case "Zechariah":
-                setChapter(14, 51);
+                setChapter(14, 23);
                 break;
             case "Malachi":
-                setChapter(4, 51);
+                setChapter(4, 18);
                 break;
             case "Matthew":
-                setChapter(28, 51);
+                setChapter(28, 75);
                 break;
             case "Mark":
-                setChapter(16, 51);
+                setChapter(16, 72);
                 break;
             case "Luke":
-                setChapter(24, 51);
+                setChapter(24, 81);
                 break;
             case "John":
-                setChapter(21, 51);
+                setChapter(21, 71);
                 break;
             case "Acts":
-                setChapter(28, 51);
+                setChapter(28, 60);
                 break;
             case "Romans":
-                setChapter(16, 51);
+                setChapter(16, 39);
                 break;
             case "1 Corinthians":
                 setChapter(16, 51);
@@ -330,16 +330,16 @@ public class MainActivity extends AppCompatActivity {
                 setChapter(13,51);
                 break;
             case "Galatians":
-                setChapter(6, 51);
+                setChapter(6, 31);
                 break;
             case "Ephesians":
-                setChapter(6, 51);
+                setChapter(6, 33);
                 break;
             case "Philippians":
-                setChapter(4, 51);
+                setChapter(4, 30);
                 break;
             case "Colossians":
-                setChapter(4, 51);
+                setChapter(4, 29);
                 break;
             case "1 Thessalonians":
                 setChapter(5, 51);
@@ -354,16 +354,16 @@ public class MainActivity extends AppCompatActivity {
                 setChapter(4, 51);
                 break;
             case "Titus":
-                setChapter(3, 51);
+                setChapter(3, 16);
                 break;
             case "Philemon":
-                setChapter(1, 51);
+                setChapter(1, 25);
                 break;
             case "Hebrews":
-                setChapter(13,51);
+                setChapter(13, 40);
                 break;
             case "James":
-                setChapter(5);
+                setChapter(5, 27);
                 break;
             case "1 Peter":
                 setChapter(5);
@@ -375,16 +375,16 @@ public class MainActivity extends AppCompatActivity {
                 setChapter(5);
                 break;
             case "2 John":
-                setChapter(1);
+                setChapter(1, 13);
                 break;
             case "3 John":
-                setChapter(1);
+                setChapter(1, 14);
                 break;
             case "Jude":
-                setChapter(1);
+                setChapter(1, 25);
                 break;
             case "Revelation":
-                setChapter(22);
+                setChapter(22, 29);
                 break;
         }
 
