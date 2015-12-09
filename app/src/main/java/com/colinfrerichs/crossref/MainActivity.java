@@ -109,10 +109,19 @@ public class MainActivity extends AppCompatActivity {
 
                 //Code to hook up API to collect verse from reference
                 String bibleVerse = bookText + " " + chapText + ":" + verseText;
+                CrossCipher cipher = new CrossCipher();
+                try {
+                    byte[] encryptedBytes = cipher.encrypt(bibleVerse);
+                    String encryptedVerse = cipher.byteArrayToHexString(encryptedBytes);
+
+                    //Code to store verse in Parse prior to sending to random user
+                    SendReference referenceSender = new SendReference();
+                    referenceSender.sendReference(encryptedVerse);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 //     System.out.print(bibleVerse);
-                //Code to store verse in Parse prior to sending to random user
-                SendReference referenceSender = new SendReference();
-                referenceSender.sendReference(bibleVerse);
+
             }
 //                });
 //            }
@@ -448,12 +457,12 @@ public class MainActivity extends AppCompatActivity {
         spinVerse.setAdapter(verseAdapter);
     }
 
-    /**
-     * You cannot create a set verse function for this unless we
-     * add a SQLite database containing all limits
-     * @param book
-     * @param chapter
-     */
+//    /**
+//     * You cannot create a set verse function for this unless we
+//     * add a SQLite database containing all limits
+//     * @param book
+//     * @param chapter
+//     */
     /*
     private void setVerse(){
         String book = spinBook.getSelectedItem().toString();
