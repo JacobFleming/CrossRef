@@ -82,9 +82,11 @@ public class InboxActivity extends AppCompatActivity {
             });
                     return messages.get(0);
         }
-        catch(NullPointerException e) {}
-return null;
+        catch(NullPointerException e) {
 
+        }
+
+        return null;
        // return messages;
     }
 
@@ -115,7 +117,6 @@ return null;
             finish();
         }
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

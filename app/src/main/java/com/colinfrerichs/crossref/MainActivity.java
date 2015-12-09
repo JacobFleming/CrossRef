@@ -179,12 +179,6 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
-    @Override
-    public void onBackPressed() {
-        Toast.makeText(getApplicationContext(), "Please use logout in toolbar.", Toast.LENGTH_LONG).show();
-    }
-
     int chapter;
     List<Integer> chapters_bible = new ArrayList<Integer>();
     List<Integer> verses_bible;
@@ -195,9 +189,8 @@ public class MainActivity extends AppCompatActivity {
     public void bookUpdated() {
         switch (spinBook.getSelectedItem().toString()) {
             case "Genesis":
-                setChapter(50, 51);
+                setChapter(50, 67);
                 break;
-            //// TODO: 12/7/2015
             case "Exodus":
                 setChapter(40,51);
                 break;
@@ -237,7 +230,6 @@ public class MainActivity extends AppCompatActivity {
             case "2 Chronicles":
                 setChapter(36, 51);
                 break;
-            //TODO
             case "Ezra":
                 setChapter(10, 51);
                 break;
@@ -254,7 +246,7 @@ public class MainActivity extends AppCompatActivity {
                 setChapter(150, 51);
                 break;
             case "Proverbs":
-                setChapter(31,51);
+                setChapter(31, 51);
                 break;
             case "Ecclesiastes":
                 setChapter(12, 51);
@@ -394,12 +386,11 @@ public class MainActivity extends AppCompatActivity {
             case "Revelation":
                 setChapter(22);
                 break;
-
         }
 
     }
-//// TODO: 12/8/2015 create database needed for set verse
 
+//// TODO: 12/8/2015 create database needed for set verse
     private void setChapter(int numChapter) {
         chapters_bible = new ArrayList<>();
         chapter = 1;
@@ -457,9 +448,6 @@ public class MainActivity extends AppCompatActivity {
         spinVerse.setAdapter(verseAdapter);
     }
 
-
-
-
     /**
      * You cannot create a set verse function for this unless we
      * add a SQLite database containing all limits
@@ -483,15 +471,6 @@ public class MainActivity extends AppCompatActivity {
            //set spinVerse = verses_bible
     }
     */
-
-
-
-
-
-
-
-
-
 
 //}
 //        if(spinBook.getSelectedItem().toString().equals("Genesis")){
@@ -522,5 +501,8 @@ public class MainActivity extends AppCompatActivity {
 //
 //        }
 
+    @Override
+    public void onBackPressed() {
 
+    }
 }
