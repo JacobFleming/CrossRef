@@ -109,17 +109,17 @@ public class MainActivity extends AppCompatActivity {
 
                 //Code to hook up API to collect verse from reference
                 String bibleVerse = bookText + " " + chapText + ":" + verseText;
-                CrossCipher cipher = new CrossCipher();
-                try {
-                    byte[] encryptedBytes = cipher.encrypt(bibleVerse);
-                    String encryptedVerse = cipher.byteArrayToHexString(encryptedBytes);
+//                CrossCipher cipher = new CrossCipher();
+//                try {
+//                    byte[] encryptedBytes = cipher.encrypt(bibleVerse);
+//                    String encryptedVerse = cipher.byteArrayToHexString(encryptedBytes);
 
                     //Code to store verse in Parse prior to sending to random user
                     SendReference referenceSender = new SendReference();
-                    referenceSender.sendReference(encryptedVerse);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                    referenceSender.sendReference(bibleVerse);
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
                 //     System.out.print(bibleVerse);
 
             }

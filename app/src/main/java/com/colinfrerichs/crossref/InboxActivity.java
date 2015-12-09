@@ -49,15 +49,15 @@ public class InboxActivity extends AppCompatActivity {
             //messageId = ParseQuery.getQuery("BibleVerse").whereEqualTo("receivingUser", ParseUser.getCurrentUser().getUsername()).getFirst().getString("objectId");
             mParseObject  = ParseQuery.getQuery("BibleVerse").whereEqualTo("receivingUser", ParseUser.getCurrentUser().getUsername()).getFirst();
 
-            CrossCipher cipher = new CrossCipher();
-            try {
-                String encryptedVerse = mParseObject.getString("verse");
-                byte[] decryptedVerse = cipher.decrypt(encryptedVerse);
-                String verse = cipher.byteArrayToHexString(decryptedVerse);
+//            CrossCipher cipher = new CrossCipher();
+//            try {
+//                String encryptedVerse = mParseObject.getString("verse");
+//                byte[] decryptedVerse = cipher.decrypt(encryptedVerse);
+                String verse = mParseObject.getString("verse");
                 message.setText(verse);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
 
             if(!message.getText().equals("No verses have been received.")){
                 btnDismiss.setText("Dismiss");
